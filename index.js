@@ -1,7 +1,6 @@
 import { DateTime } from './Modules/luxon.js';
-import { loadLocalStorage } from './Modules/localstorage.js';
 import Book from './Modules/Books.js';
-import { renderBooks } from './Modules/renderBooks.js';
+import { renderBooks, addBook } from './Modules/renderBooks.js';
 import page from './Modules/pages.js';
 
 const titleInput = document.getElementById('title');
@@ -13,20 +12,9 @@ const dateElement = document.getElementById('date');
 const date = DateTime.fromISO('2010-10-22T21:38:00');
 dateElement.textContent = date.toLocaleString(DateTime.DATETIME_MED);
 
-export const storage = loadLocalStorage();
-
-function addBook(book) {
-  Book.addBook(book);
-}
-
-function removeBook(bookId) {
-  Book.removeBook(bookId);
-}
-removeBook();
-
 submitButton.addEventListener('click', (e) => {
   e.preventDefault();
-  const id = storage.length + 1;
+  const id = Math.floor(Math.random() * 10000) + 1;
   const title = titleInput.value;
   const author = authorInput.value;
   const book = new Book(id, title, author);
