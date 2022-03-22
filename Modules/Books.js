@@ -1,9 +1,6 @@
-import { storage } from '../index.js';
-import { updateLocalStorage } from './localstorage.js';
-import { renderBooks } from './renderBooks.js';
+import { loadLocalStorage, updateLocalStorage } from './localStorage.js';
 
 const radix = 10;
-
 export default class Book {
   constructor(id, title, author) {
     this.id = id;
@@ -12,12 +9,14 @@ export default class Book {
   }
 
   static addBook(book) {
-    storage.push(book);
-    updateLocalStorage();
-    renderBooks();
+    const arr = loadLocalStorage();
+    arr.push(book);
+    updateLocalStorage(arr);
   }
 
   static removeBook(bookId) {
-    
+    const arr = loadLocalStorage();
+    const data = arr.filter((item) => item.id !== parseInt(bookId, radix));
+    updateLocalStorage(data);
   }
 }

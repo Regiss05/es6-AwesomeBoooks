@@ -1,5 +1,3 @@
-import { storage } from '../index.js';
-
 export function loadLocalStorage() {
   if (localStorage.getItem('book') === null) {
     localStorage.setItem('book', JSON.stringify([]));
@@ -12,6 +10,6 @@ export function loadLocalStorage() {
   return bookStorage;
 }
 
-export function updateLocalStorage() {
-  localStorage.setItem('book', JSON.stringify(storage));
+export function updateLocalStorage(data) {
+  localStorage.setItem('book', JSON.stringify(data));
 }
