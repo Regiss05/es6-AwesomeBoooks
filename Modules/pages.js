@@ -8,27 +8,27 @@ const bookListDiv = document.getElementById('table');
 const formDiv = document.getElementById('form');
 const contactDiv = document.getElementById('contact');
 
-function constructListPage() {
+const constructListPage = () => {
   bookListDiv.style.display = 'block';
   formDiv.style.display = 'none';
   contactDiv.style.display = 'none';
 
   renderBooks();
-}
+};
 
-function constructFormPage() {
+const constructFormPage = () => {
   bookListDiv.style.display = 'none';
   formDiv.style.display = 'block';
   contactDiv.style.display = 'none';
-}
+};
 
-function constructContactPage() {
+const constructContactPage = () => {
   bookListDiv.style.display = 'none';
   formDiv.style.display = 'none';
   contactDiv.style.display = 'block';
-}
+};
 
-export default function page(page) {
+const page = (page) => {
   switch (page) {
     case 0:
       constructListPage();
@@ -42,7 +42,7 @@ export default function page(page) {
     default:
       break;
   }
-}
+};
 
 itemList.addEventListener('click', () => {
   page(0);
@@ -55,3 +55,5 @@ itemAdd.addEventListener('click', () => {
 itemContact.addEventListener('click', () => {
   page(2);
 });
+
+export default page;

@@ -1,13 +1,13 @@
 import { loadLocalStorage } from './localStorage.js';
 import Book from './Books.js';
 
-export function addBook(book) {
+export const addBook = (book) => {
   Book.addBook(book);
-}
+};
 
-function removeBook(bookId) {
+const removeBook = (bookId) => {
   Book.removeBook(bookId);
-}
+};
 
 const renderBook = (book) => {
   const { title, author } = book;
